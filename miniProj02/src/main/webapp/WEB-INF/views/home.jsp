@@ -1,40 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-	<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+    <h2>${user.username}님의 회원 정보</h2>
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
+    <p>name: ${user.name}</p>
+    <p>username: ${user.username}</p>
+    <p>email: ${user.email}</p>
+    <p>password: ${user.password}</p>
+    <p>address: ${user.address}</p>
+    <p>phone: ${user.phone}</p>
+    <p>website: ${user.website}</p>
+    <p>company: ${user.company}</p>
 
-<c:choose>
-	<c:when test="${empty principal}">
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/login/loginForm">로그인</a></li>
-			<li class="nav-item"><a class="nav-link" href="/login/joinForm">회원가입</a></li>
-		</ul>
-	</c:when>
-	<c:otherwise>
-		이름 : ${principal.member_name}
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/member/updateForm">회원정보</a></li>
-			<li class="nav-item"><a class="nav-link" href="/login/logout">로그아웃</a></li>
-			<li class="nav-item"><a class="nav-link" href="/board/list">게시물 목록</a></li>
-		</ul>
-	</c:otherwise>
-</c:choose>
+    <button type="button" onclick="location.href='update'">수정하기</button>
 
+    <form action="/logout" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit">로그아웃</button>
+    </form>
+
+    <form action="/delete" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit">탈퇴하기</button>
+    </form>
 </body>
 </html>
