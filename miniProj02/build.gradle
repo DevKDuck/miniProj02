@@ -29,6 +29,7 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	implementation 'org.projectlombok:lombok'
 	
+	
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
 	implementation 'org.springframework.security:spring-security-taglibs'
 

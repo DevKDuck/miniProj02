@@ -9,45 +9,81 @@
 
     <!-- 회원가입 -->
     <insert id="insertUser">
-        INSERT INTO User
-            (name, username, email, password, address, phone, website, company)
+        INSERT INTO tb_member2
+            (member_id, member_pwd, member_name, member_birthday, member_gender, member_phone_number, member_address, member_hobby)
         VALUES
-            (#{name}, #{username}, #{email}, #{password}, #{address}, #{phone}, #{website}, #{company})
+            (#{member_id}, #{member_pwd}, #{member_name}, #{member_birthday}, #{member_gender}, #{member_phone_number}, #{member_address}, #{member_hobby})
     </insert>
 
     <!-- 회원 정보 가져오기 -->
     <select id="getUserByEmail" resultType="com.devkduck.board.entity.UserVo">
         SELECT *
-        FROM User
-        WHERE email = #{email}
+        FROM tb_member2
+        WHERE member_id = #{email}
     </select>
 
     <select id="getUserById" resultType="com.devkduck.board.entity.UserVo">
         SELECT *
-        FROM User
-        WHERE id = #{id}
+        FROM tb_member2
+        WHERE member_id = #{id}
     </select>
 
     <!-- 회원정보 수정 -->
     <update id="updateUser">
-        UPDATE User
-        SET name = #{name},
-            username = #{username},
-            email = #{email},
-            password = #{password},
-            address = #{address},
-            phone = #{phone},
-            website = #{website},
-            company = #{company}
-        WHERE id = #{id}
+        UPDATE tb_member2
+        SET member_id = #{member_id},
+            member_pwd = #{member_pwd},
+            member_name = #{member_name},
+            member_birthday = #{member_birthday},
+            member_gender = #{member_gender},
+            member_phone_number = #{member_phone_number},
+            member_address = #{member_address},
+            member_hobby = #{member_hobby}
+        WHERE member_id = #{member_id}
     </update>
 
     <!-- 탈퇴 -->
     <delete id="deleteUser">
         DELETE
-        FROM User
-        WHERE id = #{id}
+        FROM tb_member2
+        WHERE member_id = #{member_id}
     </delete>
+    
+    
+	<select id="login" resultType="com.devkduck.board.entity.UserVo">
+		select 
+			*  
+		from tb_member2   
+	   WHERE member_id = #{member_id}
+	</select>
 
+
+	<update id="updateMemberLastLogin">
+		update tb_member2 set 
+			member_last_login_time = now()
+		where member_id = #{member_id}  
+	</update>
+	
+	<update id="loginCountInc">
+		update tb_member2 set 
+			member_login_count = member_login_count + 1
+			<choose>
+				<when test="member_login_count > 5">
+					, member_account_locked = 'Y'
+				</when>
+				<otherwise>
+					, member_account_locked = 'N'
+				</otherwise>
+			</choose>
+		where member_id = #{member_id} 
+	</update> 
+
+	 
+	<update id="loginCountClear">
+		update tb_member2 set 
+			 member_login_count = 0 
+			,member_account_locked = 'N'
+		where member_id = #{member_id} 
+	</update> 
 
 </mapper>
