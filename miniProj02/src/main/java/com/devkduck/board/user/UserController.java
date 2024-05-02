@@ -113,12 +113,22 @@ public class UserController {
     	    return "redirect:/";
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public String withdraw(HttpSession session) { // 회원 탈퇴
-        String id = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (id != null) {
-            userService.withdraw(id);
-        }
+        
+   	 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    
+	    String id;
+
+	    if (principal instanceof UserDetails) {
+	        // principal이 UserDetails의 인스턴스인 경우, getUsername을 통해 사용자 ID 또는 이름을 가져옵니다.
+	        id = ((UserDetails)principal).getUsername();
+	        userService.withdraw(id);
+	    } else {
+	        // principal이 다른 타입의 객체인 경우(예: String), toString을 통해 처리합니다.
+	        id = principal.toString();
+	    }
+	    
         SecurityContextHolder.clearContext(); // SecurityContextHolder에 남아있는 token 삭제
         return "redirect:/";
     }

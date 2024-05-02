@@ -32,6 +32,7 @@
 			<li class="nav-item"><a class="nav-link" href="login/editPage">회원정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="/login/logout">로그아웃</a></li>
 			<li class="nav-item"><a class="nav-link" href="/board/list">게시물 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/delete">회원삭제</a></li>
 		</ul>
 	</c:otherwise>
 </c:choose>
