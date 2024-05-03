@@ -27,4 +27,6 @@ public interface UserMapper {
 	void loginCountInc(UserVo user);
 
 	void loginCountClear(String email);
+	
+	void memberAccountUnlocked();
 }

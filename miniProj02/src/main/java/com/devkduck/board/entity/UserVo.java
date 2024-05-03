@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class UserVo implements UserDetails {
 	private String member_id;
 	private String member_pwd;
@@ -45,7 +46,12 @@ public class UserVo implements UserDetails {
 	public boolean isAccountNonLocked() {
 		return "N".equalsIgnoreCase(member_account_locked);
 	}
-
+	
+	@Scheduled(fixedDelay=600000)
+	public void scheduleAccountUnlock() {
+		this.member_account_locked = "N";
+	}
+	
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;

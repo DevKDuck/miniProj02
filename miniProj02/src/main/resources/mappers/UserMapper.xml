@@ -68,7 +68,7 @@
 		update tb_member2 set 
 			member_login_count = member_login_count + 1
 			<choose>
-				<when test="member_login_count > 5">
+				<when test="member_login_count >= 2">
 					, member_account_locked = 'Y'
 				</when>
 				<otherwise>
@@ -84,6 +84,15 @@
 			 member_login_count = 0 
 			,member_account_locked = 'N'
 		where member_id = #{member_id} 
+	</update> 
+
+	<update id="memberAccountUnlocked">
+		update tb_member2 set 
+			 member_login_count = 0 
+			,member_account_locked = 'N'
+			<![CDATA[
+				where member_account_locked ='Y' AND account_locked_time < date_add(now(), interval -1 MINUTE)
+			]]>
 	</update> 
 
 </mapper>

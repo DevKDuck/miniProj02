@@ -20,6 +20,7 @@
 </form>
 <script>
 	msg = "${error ? exception : ''}";
+	 
 	if (msg !== "")  {
 		alert(msg);
 	}
