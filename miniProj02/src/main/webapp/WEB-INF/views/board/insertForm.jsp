@@ -21,14 +21,25 @@
 <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 <style type="text/css">
 #iForm {
-	text-align: center;
+	/* text-align: center; */
 }
 
-.btitle {
-	width: 80%;
-	max-width: 800px;
-	margin: 0 auto;
+/* 제목과 비밀번호 입력 필드의 너비와 높이를 조정 */
+input[type="text"], input[type="password"] {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    box-sizing: border-box; 
 }
+
+
+textarea {
+    width: 100%; 
+    height: 200px; 
+    padding: 10px; 
+    box-sizing: border-box;
+}
+
 
 .ck.ck-editor {
 	width: 80%;
@@ -47,7 +58,7 @@
 
 	<main class="container">
 		<form id="iForm" method="post" enctype="multipart/form-data">
-			<input type="hidden" id="token" name="token" value="${token}">
+			<%-- <input type="hidden" id="token" name="token" value="${token}"> --%>
 			<label for="title">제목:</label> <input type="text" id="title" name="title" required><br>
 			<label>비밀번호:</label> <input type="password" id="password" name="password" required><br>
 			<label for="title">내용:</label> <textarea id="editor" name="content" required></textarea>
