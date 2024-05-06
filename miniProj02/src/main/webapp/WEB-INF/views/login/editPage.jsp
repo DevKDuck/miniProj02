@@ -3,10 +3,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <%@ include file="/WEB-INF/views/include/meta.jsp" %>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
+    <%-- 부트스트랩5 css --%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modify Information</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %><br/>
     <h2>회원 정보 수정</h2>
     <form action="/update" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -48,5 +55,6 @@
 
         <button type="submit">저장하기</button>
     </form>
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

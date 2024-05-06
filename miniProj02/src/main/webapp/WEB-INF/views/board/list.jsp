@@ -5,7 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
+  <%@ include file="/WEB-INF/views/include/meta.jsp" %>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
+    <%-- 부트스트랩5 css --%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style type="text/css">
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -15,6 +21,7 @@ table, th, td {
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %><br/>
 <h1>게시물 목록</h1>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
@@ -57,21 +64,11 @@ table, th, td {
 			<li class="nav-item"><a class="nav-link" href="/board/insertForm">게시물 등록</a></li>
 		</ul>		
 		
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/login/logout">로그아웃</a></li>
-		</ul>
 	</c:otherwise>
 </c:choose>
 
-<sec:authorize access="isAuthenticated()">
-   로그아웃
-   회원정보보기
-</sec:authorize>
-
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-  관리자 페이지
-</sec:authorize>
 
 
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
