@@ -5,6 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -23,9 +29,35 @@
 	</c:when>
 	<c:otherwise>
 		이름 : ${principal.member_name}
-		 <button type="button" onclick="location.href='update'">수정하기</button>
+		
+		 <table style="width:100%">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>비밀번호</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>본횟수</th>
+            
+        </tr>
+        <c:forEach items="${list}" var="u">
+        <tr>
+            <td>${u.id}</td>
+            <td>${u.title}</td>
+            <td>${u.content}</td>
+            <td>${u.password}</td>
+            <td>${u.writer}</td>
+            <td>${u.creation_date}</td>
+            <td>${u.view_count}</td>
+        </tr>
+        </c:forEach>
+    </table>
+			<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="/board/insertForm">게시물 등록</a></li>
+		</ul>		
+		
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/update">회원정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="/login/logout">로그아웃</a></li>
 		</ul>
 	</c:otherwise>

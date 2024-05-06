@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "file:///Users/duck/Desktop/sts4-workspace/mybatis-3-mapper.dtd">
+<mapper namespace="com.devkduck.board.board.BoardMapper">
+	 <!-- User 테이블 가져오기 -->
+    <select id="getBoardList" resultType="com.devkduck.board.entity.BoardVo">
+        SELECT *
+        FROM board
+    </select>
+
+    <!-- 회원가입 -->
+   <!--  <insert id="insertUser">
+        INSERT INTO tb_member2
+            (member_id, member_pwd, member_name, member_birthday, member_gender, member_phone_number, member_address, member_hobby)
+        VALUES
+            (#{member_id}, #{member_pwd}, #{member_name}, #{member_birthday}, #{member_gender}, #{member_phone_number}, #{member_address}, #{member_hobby})
+    </insert> -->
+
+    <!-- 회원 정보 가져오기 -->
+    <!-- <select id="getUserByEmail" resultType="com.devkduck.board.entity.UserVo">
+        SELECT *
+        FROM tb_member2
+        WHERE member_id = #{email}
+    </select>
+
+    <select id="getUserById" resultType="com.devkduck.board.entity.UserVo">
+        SELECT *
+        FROM tb_member2
+        WHERE member_id = #{id}
+    </select>
+ -->
+    <!-- 회원정보 수정 -->
+    <!-- <update id="updateUser">
+        UPDATE tb_member2
+        SET member_id = #{member_id},
+            member_pwd = #{member_pwd},
+            member_name = #{member_name},
+            member_birthday = #{member_birthday},
+            member_gender = #{member_gender},
+            member_phone_number = #{member_phone_number},
+            member_address = #{member_address},
+            member_hobby = #{member_hobby}
+        WHERE member_id = #{member_id}
+    </update>
+ -->
+    <!-- 탈퇴 -->
+    <!-- <delete id="deleteUser">
+        DELETE
+        FROM tb_member2
+        WHERE member_id = #{member_id}
+    </delete>
+    
+    
+	<select id="login" resultType="com.devkduck.board.entity.UserVo">
+		select 
+			*  
+		from tb_member2   
+	   WHERE member_id = #{member_id}
+	</select>
+
+ -->
+	<!-- <update id="updateMemberLastLogin">
+		update tb_member2 set 
+			member_last_login_time = now()
+		where member_id = #{member_id}  
+	</update>
+	
+	<update id="loginCountInc">
+		update tb_member2 set 
+			member_login_count = member_login_count + 1
+			<choose>
+				<when test="member_login_count >= 2">
+					, member_account_locked = 'Y'
+				</when>
+				<otherwise>
+					, member_account_locked = 'N'
+				</otherwise>
+			</choose>
+		where member_id = #{member_id} 
+	</update> 
+
+	 
+	<update id="loginCountClear">
+		update tb_member2 set 
+			 member_login_count = 0 
+			,member_account_locked = 'N'
+		where member_id = #{member_id} 
+	</update> 
+
+	<update id="memberAccountUnlocked">
+		update tb_member2 set 
+			 member_login_count = 0 
+			,member_account_locked = 'N'
+			<![CDATA[
+				where member_account_locked ='Y' AND account_locked_time < date_add(now(), interval -1 MINUTE)
+			]]>
+	</update> 
+ -->
+</mapper>

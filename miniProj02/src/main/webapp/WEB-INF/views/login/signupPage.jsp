@@ -12,28 +12,28 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
         <div>
-            <input type="text" name="member_id" placeholder="아이디"/>
+            아이디: <input type="text" name="member_id" placeholder="아이디"/>
         </div>
         <div>
-            <input type="password" name="member_pwd" placeholder="비밀번호"/>
+           비밀번호: <input type="password" name="member_pwd" placeholder="비밀번호"/>
         </div>
         <div>
-            <input type="text" name="member_name" placeholder="이름"/>
+           이름: <input type="text" name="member_name" placeholder="이름"/>
         </div>
         <div>
-            <input type="date" name="member_birthday"/>
+            생일: <input type="date" name="member_birthday"/>
         </div>
         <div>
-            <input type="text" name="member_gender" placeholder="성별"/>
+            성별: <input type="text" name="member_gender" placeholder="성별"/>
         </div>
         <div>
-            <input type="text" name="member_phone_number" placeholder="번호"/>
+            번호: <input type="text" name="member_phone_number" placeholder="번호"/>
         </div>
         <div>
-            <input type="text" name="member_address" placeholder="주소"/>
+            주소: <input type="text" name="member_address" placeholder="주소"/>
         </div>
         <div>
-            <input type="text" name="member_hobby" placeholder="취미"/>
+            취미: <input type="text" name="member_hobby" placeholder="취미"/>
         </div>
 
         <button type="submit">회원가입</button>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+HOME
 </h1>
 
 <sec:authorize access="isAuthenticated()">
@@ -32,7 +32,7 @@
 			<li class="nav-item"><a class="nav-link" href="login/editPage">회원정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="/login/logout">로그아웃</a></li>
 			<li class="nav-item"><a class="nav-link" href="/userList">유저 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/board/list">게시물 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/boardlist">게시물 목록</a></li>
 			<li class="nav-item"><a class="nav-link" href="/delete">회원삭제</a></li>
 		</ul>
 	</c:otherwise>
