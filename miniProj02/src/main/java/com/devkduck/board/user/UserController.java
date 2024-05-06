@@ -40,7 +40,7 @@ public class UserController {
     public String getUserList(Model model) { // User 테이블의 전체 정보를 보여줌
         List<UserVo> userList = userService.getUserList();
         model.addAttribute("list", userList);
-        return "userListPage";
+        return "/admin/userListPage";
     }
 
  

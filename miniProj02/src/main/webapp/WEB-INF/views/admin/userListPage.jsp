@@ -3,16 +3,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User List</title>
 </head>
 <body>
     <h2>User List</h2>
-    <table>
+    <table style="width:100%">
         <tr>
             <th>member_id</th>
             <th>member_name</th>
-            <th>username</th>
             <th>member_birthday</th>
             <th>member_gender</th>
             <th>member_phone_number</th>
