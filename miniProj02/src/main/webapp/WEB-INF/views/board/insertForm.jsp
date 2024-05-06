@@ -58,15 +58,15 @@ textarea {
 
 	<main class="container">
 		<form id="iForm" method="post" enctype="multipart/form-data">
-			<%-- <input type="hidden" id="token" name="token" value="${token}"> --%>
+			
 			<label for="title">제목:</label> <input type="text" id="title" name="title" required><br>
 			<label>비밀번호:</label> <input type="password" id="password" name="password" required><br>
 			<label for="title">내용:</label> <textarea id="editor" name="content" required></textarea>
 			<div id="div_file">
 				<input type='file' name='file' />
 			</div>
-			<input class="btn btn-primary" type="submit" value="생성"> <a
-				class="btn btn-secondary" href="javascript:history(-1);">취소</a>
+			<input type="submit" value="등록">
+			<a href="javascript:history(-1);">취소</a>
 		</form>
 	</main>
 	<script type="text/javascript" src="/js/common.js"></script>

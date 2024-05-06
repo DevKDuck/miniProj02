@@ -1,20 +1,23 @@
 package com.devkduck.board.entity;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+//import javax.validation.constraints.Max;
+//import javax.validation.constraints.Min;
+//import javax.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PageRequestVO {
-
+	
     @Builder.Default
 //    @Min(value = 1)
 //    @Positive
@@ -30,28 +33,26 @@ public class PageRequestVO {
 
     private String searchKey;
 
-    private Boolean lockCheck;
-
     public int getSkip(){
         return (pageNo - 1) * 10;
     }
 
-    public String getLink() {
-        if(link == null){
-            StringBuilder builder = new StringBuilder();
-            builder.append("page=" + this.pageNo);
-            builder.append("&size=" + this.size);
-
-            //검색어가 존재할 경우
-            if (this.searchKey != null && this.searchKey.length() != 0) {
-                try {
-                    builder.append("&searchKey=" + URLEncoder.encode(this.searchKey,"UTF-8"));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-            }
-            link = builder.toString();
-        }
-        return link;
-    }
+	public String getLink() {
+		if(link == null){
+			StringBuilder builder = new StringBuilder();
+			builder.append("page=" + this.pageNo);
+			builder.append("&size=" + this.size);
+			
+			//검색어가 존재할 경우  
+			if (this.searchKey != null && this.searchKey.length() != 0) {
+				try {
+					builder.append("&searchKey=" + URLEncoder.encode(this.searchKey,"UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			}
+			link = builder.toString();
+		}
+		return link;
+	}    
 }
