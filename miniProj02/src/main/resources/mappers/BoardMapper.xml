@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "file:///Users/duck/Desktop/sts4-workspace/mybatis-3-mapper.dtd">
 <mapper namespace="com.devkduck.board.board.BoardMapper">
 	 <!-- User 테이블 가져오기 -->
-    <select id="getBoardList" resultType="com.devkduck.board.entity.BoardVo">
+    <!-- <select id="getBoardList" resultType="com.devkduck.board.entity.BoardVo">
         SELECT *
         FROM board
     </select>
+     -->
     
-    
-    <!--   <sql id="search">
+     <sql id="search">
         <where>
             <if test="searchKey != null and searchKey != ''">
                 title like concat('%', #{searchKey}, '%')
@@ -17,20 +17,20 @@
     </sql>
 
 
-    <select id="getList" resultType="BoardVO">
+    <select id="getList" resultType="BoardVo">
 		select 
-			b.*, m.member_name bwriter  
+			b.*, m.member_name writer  
 		from board b inner join tb_member2 m on b.writer = m.member_id
 		<include refid="search"/>
-		order by bno desc limit #{skip}, #{size}
+		order by b.id desc limit #{skip}, #{size}
     </select>
 
     <select id="getTotalCount" resultType="int">
 		select 
 			count(*)   
-		from tb_board 
+		from board 
 		<include refid="search"/>
-    </select> -->
+    </select>
     
 
     <!-- 회원가입 -->

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "file:///Users/duck/Desktop/sts4-workspace/mybatis-3-mapper.dtd">
 <mapper namespace="com.devkduck.board.code.CodeMapper">
 
-    <select id="getList" resultType="CodeVO">
+    <select id="getList" resultType="com.devkduck.board.entity.CodeVO">
 		select 
 			*  
 		from tb_code 

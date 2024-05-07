@@ -41,7 +41,7 @@ table, th, td {
     	<input type="text" id="searchKey" name="searchKey" value="${param.searchKey}">
     	<input type="submit" value="검색">
     </form>
-    <%--  <table border="1">
+     <table border="1">
         <tr>
             <th>게시물번호</th>
             <th>제목</th>
@@ -50,15 +50,16 @@ table, th, td {
         </tr>
         <c:forEach var="board" items="${pageResponseVO.list}">
         <tr>
-            <td style="cursor:pointer;"><a data-bs-toggle="modal" data-bs-target="#boardViewModel" data-bs-bno="${board.id}">${board.id}</a></td>
+           <%--  <td style="cursor:pointer;"><a data-bs-toggle="modal" data-bs-target="#boardViewModel" data-bs-bno="${board.id}">${board.id}</a></td> --%>
+            
             <td>${board.title}</td>
             <td>${board.writer}</td>
             <td>${board.creation_date}</td>
         </tr>
         </c:forEach>
-    </table> --%>
+    </table> 
     
-   <%--  <!--  페이지 네비게이션 바 출력  -->
+  <!--  페이지 네비게이션 바 출력  -->
     <div class="float-end">
         <ul class="pagination flex-wrap">
             <c:if test="${pageResponseVO.prev}">
@@ -81,7 +82,7 @@ table, th, td {
 
     </div>
     
-<!-- 상세보기 Modal -->
+<!-- <!-- 상세보기 Modal -->
 <div class="modal fade" id="boardViewModel" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -90,12 +91,12 @@ table, th, td {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-	      <label>게시물 번호:</label><span id="bno"></span><br/>
-	      <label>제목 : </label><span id="btitle"></span><br/>
-	      <label>내용 : </label><span id="bcontent"></span><br/>
+	      <label>게시물 번호:</label><span id="no"></span><br/>
+	      <label>제목 : </label><span id="title"></span><br/>
+	      <label>내용 : </label><span id="content"></span><br/>
 	      <label>ViewCount :</label><span id="view_count"></span><br/>
-	      <label>작성자 : </label><span id="bwriter"></span><br/>
-	      <label>작성일 : </label><span id="bdate"></span><br/>
+	      <label>작성자 : </label><span id="writer"></span><br/>
+	      <label>작성일 : </label><span id="creation_date"></span><br/>
 	      <label>첨부파일 : </label><span id="boardFile" data-board-file-no="" onclick="onBoardFileDownload(this)"></span><br/>
       </div>
       <div class="modal-footer">
@@ -103,7 +104,7 @@ table, th, td {
       </div>
     </div>
   </div>
-</div>
+</div> -->
     
 <script>
 menuActive("board_link");
@@ -130,14 +131,14 @@ document.querySelector(".pagination").addEventListener("click", function (e) {
 document.querySelector("#size").addEventListener("change", e => {
     searchForm.submit();
 });
-
+/* 
 const boardViewModel = document.querySelector("#boardViewModel");
-const span_bno = document.querySelector(".modal-body #bno");
-const span_btitle = document.querySelector(".modal-body #btitle");
-const span_bcontent = document.querySelector(".modal-body #bcontent");
+const span_bno = document.querySelector(".modal-body #no");
+const span_btitle = document.querySelector(".modal-body #title");
+const span_bcontent = document.querySelector(".modal-body #bontent");
 const span_view_count = document.querySelector(".modal-body #view_count");
-const span_bwriter = document.querySelector(".modal-body #bwriter");
-const span_bdate = document.querySelector(".modal-body #bdate");
+const span_bwriter = document.querySelector(".modal-body #writer");
+const span_bdate = document.querySelector(".modal-body #creation_date");
 
 boardViewModel.addEventListener('shown.bs.modal', function (event) {
 	const a = event.relatedTarget;
@@ -191,17 +192,17 @@ function jsView(bno) {
 //	listForm.submit();
 //	.Modal("#boardViewModel").model();
 //	boardViewModel.show();
-}
+} */
 </script>      
     <div class="button-container">
-        <a href="insertForm">등록</a>
-    </div> --%>
-<%-- <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+        <a href="/board/insertForm">등록</a>
+    </div> 
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
-</html> --%>
+</html>
     
     
-
+<%-- 
 
 
 <c:choose>
@@ -243,7 +244,7 @@ function jsView(bno) {
 		
 	</c:otherwise>
 </c:choose> 
-
+ --%>
 
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

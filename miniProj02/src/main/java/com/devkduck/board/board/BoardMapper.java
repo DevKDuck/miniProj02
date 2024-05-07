@@ -11,10 +11,10 @@ import com.devkduck.board.entity.PageRequestVO;
 @Mapper
 public interface BoardMapper {
 
-	List<BoardVo> getBoardList(); // Board 테이블 가져오기
+//	List<BoardVo> getBoardList(); // Board 테이블 가져오기
 	
-//	List<BoardVo> getList(PageRequestVO pageRequestVO);
-//	int  getTotalCount(PageRequestVO pageRequestVO);
+	List<BoardVo> getList(PageRequestVO pageRequestVO);
+	int  getTotalCount(PageRequestVO pageRequestVO);
 //
 //	void insertUser(UserVo userVo); // 회원 가입
 //

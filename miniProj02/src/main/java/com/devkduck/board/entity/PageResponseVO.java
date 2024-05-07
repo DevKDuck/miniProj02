@@ -26,7 +26,7 @@ public class PageResponseVO<E> {
 
     private List<E> list;
 
-    @Builder
+    @Builder(builderMethodName = "withAll")
     public PageResponseVO(List<E> list, int total, int pageNo, int size){
 
         this.pageNo = pageNo;
@@ -48,4 +48,6 @@ public class PageResponseVO<E> {
         this.next =  total > this.end * this.size;
 
     }
+
+	
 }

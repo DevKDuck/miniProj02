@@ -25,25 +25,25 @@ public class BoardService {
 
 
     
-    public List<BoardVo> getBoardList() {
-        return boardMapper.getBoardList();
-    }
+//    public List<BoardVo> getBoardList() {
+//        return boardMapper.getBoardList();
+//    }
     
-//    public PageResponseVO<BoardVo> getList(PageRequestVO pageRequestVO) {
-//    	List<BoardVo> list = boardMapper.getList(pageRequestVO);
-//        int total = boardMapper.getTotalCount(pageRequestVO);
-//        
-//        log.info("list {} ", list);
-//        log.info("total  = {} ", total);
-//
-//        PageResponseVO<BoardVo> pageResponseVO = PageResponseVO.<BoardVo>builder()
-//                .list(list)
-//                .total(total)
-//                .size(pageRequestVO.getSize())
-//                .pageNo(pageRequestVO.getPageNo())
-//                .build();
-//
-//        return pageResponseVO;
-//	}
+    public PageResponseVO<BoardVo> getList(PageRequestVO pageRequestVO) {
+    	List<BoardVo> list = boardMapper.getList(pageRequestVO);
+        int total = boardMapper.getTotalCount(pageRequestVO);
+        
+        log.info("list {} ", list);
+        log.info("total  = {} ", total);
+
+        PageResponseVO<BoardVo> pageResponseVO = PageResponseVO.<BoardVo>withAll()
+                .list(list)
+                .total(total)
+                .size(pageRequestVO.getSize())
+                .pageNo(pageRequestVO.getPageNo())
+                .build();
+
+        return pageResponseVO;
+	}
 
 }

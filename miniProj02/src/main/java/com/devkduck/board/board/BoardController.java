@@ -1,29 +1,23 @@
 package com.devkduck.board.board;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import com.devkduck.board.code.CodeService;
-import com.devkduck.board.entity.BoardVo;
+
 import com.devkduck.board.entity.PageRequestVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,35 +26,38 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
     @Autowired
     private BoardService boardService;
+    @Autowired
     private CodeService codeService;
 	
-    @GetMapping("/boardlist")
-    public String getBoardList(Model model) { // User 테이블의 전체 정보를 보여줌
-    	System.out.println("dasfjahsdfjklhdsajkflhsadklfhsadklfhlaksd");
-    	List<BoardVo> boardList = boardService.getBoardList();
-        model.addAttribute("list", boardList);
-        
-        return "/board/list";
-    }
-
-//    @RequestMapping("/boardlist")
-//	public String list(@Validated PageRequestVO pageRequestVO, BindingResult bindingResult, Model model) throws ServletException, IOException {
-//		log.info("목록");
-//		
-//		log.info(pageRequestVO.toString());
-//
-//        if(bindingResult.hasErrors()){
-//        	pageRequestVO = PageRequestVO.builder().build();
-//        }
+//    @GetMapping("/boardlist")
+//    public String getBoardList(Model model) { // User 테이블의 전체 정보를 보여줌
+//    	System.out.println("dasfjahsdfjklhdsajkflhsadklfhsadklfhlaksd");
+//    	List<BoardVo> boardList = boardService.getBoardList();
+//        model.addAttribute("list", boardList);
 //        
-//		//2. jsp출력할 값 설정
-//		model.addAttribute("pageResponseVO", boardService.getList(pageRequestVO));
-//		model.addAttribute("sizes", codeService.getList());
-//
-//		
-//		return "/board/list";
-//	}
-// 
+//        return "/board/list";
+//    }
+
+	@RequestMapping("/boardlist")
+	public String list(@Valid PageRequestVO pageRequestVO, BindingResult bindingResult, Model model) throws ServletException, IOException {
+		log.info("목록");
+		
+		log.info(pageRequestVO.toString());
+
+        if(bindingResult.hasErrors()){
+        	pageRequestVO = PageRequestVO.builder().build();
+        }
+        
+		//2. jsp출력할 값 설정
+		model.addAttribute("pageResponseVO", boardService.getList(pageRequestVO));
+		//model.addAttribute("sizes", new int[] {10, 20, 50, 100});
+		model.addAttribute("sizes", codeService.getList());
+//		model.addAttribute("sizes", "10,20,50,100");
+		
+		return "/board/list";
+	}
+	
+	
     @GetMapping("/board/insertForm")
     public String insertPage() {  // 회원 가입 페이지
         
