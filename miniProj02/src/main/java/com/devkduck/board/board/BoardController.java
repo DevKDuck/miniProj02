@@ -20,9 +20,12 @@ import com.devkduck.board.code.CodeService;
 
 import com.devkduck.board.entity.PageRequestVO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
+//@RequiredArgsConstructor
+@RequestMapping("/board")
 public class BoardController {
     @Autowired
     private BoardService boardService;
@@ -38,7 +41,7 @@ public class BoardController {
 //        return "/board/list";
 //    }
 
-	@RequestMapping("/boardlist")
+	@RequestMapping("list")
 	public String list(@Valid PageRequestVO pageRequestVO, BindingResult bindingResult, Model model) throws ServletException, IOException {
 		log.info("목록");
 		

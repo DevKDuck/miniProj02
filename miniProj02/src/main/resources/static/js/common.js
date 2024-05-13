@@ -76,10 +76,12 @@ const myFileFetch  = (url, formId, handler) => {
     });
 }
 
-//
-// const menuActive = link_id => {
-//     document.querySelector("#" + link_id).classList.add("active");
-// }
+
+const menuActive = link_id => {
+     document.querySelector("#" + link_id).classList.add("active");
+}
+console.log(menuActive);
+
 
 /**
  * 유효성 검사
